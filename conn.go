@@ -356,7 +356,7 @@ func (c *Conn) readUntil(read bool, delims ...string) ([]byte, int, error) {
 	for {
 		b, err := c.ReadByte()
 		if err != nil {
-			return nil, 0, err
+			return line, 0, err // modify so that return all buffer even without match
 		}
 		if read {
 			line = append(line, b)
